@@ -2,6 +2,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import { TodoModel } from './models/todo.js'
+require('dotenv').config()
 
 const app = express()
 
@@ -47,17 +48,13 @@ app.delete('/todos/:id', (req, res) => {
     })
 })
 
-
-const conString = "mongodb+srv://db_admin:admin1234@cluster0.8jjwf.mongodb.net/todo_db?retryWrites=true&w=majority"
-// const conString = "mongodb://localhost/todo_db"
-
-app.listen(5005, () => {
+app.listen(process.env.PORT||5005, () => {
     console.log('Server is up and running 🚀🚀🚀')
 })
 
 // option 1
-mongoose.connect(conString).then(() => {
-    console.log('connected to MongoDB')
+mongoose.connect(process.env.CON_STRING).then(() => {
+    console.log('Connected to MongoDB 📡📡📡')
 }).catch(error => {
     console.log('Something went wrong: ', error)
 
