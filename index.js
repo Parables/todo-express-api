@@ -2,7 +2,9 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import { TodoModel } from './models/todo.js'
-require('dotenv').config()
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 
